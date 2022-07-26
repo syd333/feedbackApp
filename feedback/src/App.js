@@ -1,8 +1,11 @@
+import Header from "./components/Header";
+
 function App() {
   return (
-    <div>
-      <header>Feedback</header>
-    </div>
+    <>
+      <Header />
+      <div className="container">APP</div>
+    </>
   );
 }
 
