@@ -5,20 +5,52 @@ const FeedbackContext = createContext();
 
 export const FeedbackProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
-  const [feedback, setFeedback] = useState([]);
+  const [feedback, setFeedback] = useState([
+    {
+      id: 1,
+      text: "This is feedback item 1",
+      rating: 10,
+    },
+    {
+      id: 2,
+      text: "This is feedback item 2",
+      rating: 9,
+    },
+    {
+      id: 3,
+      text: "This is feedback item 3",
+      rating: 7,
+    },
+  ]);
   const [feedbackEdit, setFeedbackEdit] = useState({
     item: {},
     edit: false,
   });
 
+  useEffect(() => {});
+
+  // delete fb
   const deleteFeedback = (id) => {
     if (window.confirm("Are you sure you want to delete?")) {
       setFeedback(feedback.filter((item) => item.id !== id));
     }
   };
+
+  //add fb
   const addFeedback = (newFeedback) => {
     newFeedback.id = uuidv4();
     setFeedback([newFeedback, ...feedback]);
+  };
+
+  //update fb
+  const updateFeedback = () => {};
+
+  // setting item to be updated
+  const editFeedback = (item) => {
+    setFeedbackEdit({
+      item,
+      edit: true,
+    });
   };
 
   return (
@@ -27,6 +59,11 @@ export const FeedbackProvider = ({ children }) => {
         feedback,
         deleteFeedback,
         addFeedback,
+        //function
+        editFeedback,
+        updateFeedback,
+        //piece of state
+        feedbackEdit,
       }}
     >
       {children}
