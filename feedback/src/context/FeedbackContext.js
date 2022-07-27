@@ -27,7 +27,6 @@ export const FeedbackProvider = ({ children }) => {
     edit: false,
   });
 
-  useEffect(() => {});
 
   // delete fb
   const deleteFeedback = (id) => {
